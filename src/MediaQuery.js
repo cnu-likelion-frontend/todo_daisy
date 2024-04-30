@@ -1,7 +1,7 @@
 import { useMediaQuery } from 'react-responsive';
 
 const Desktop = ({ children }) => {
-  const isDesktop = useMediaQuery({ minWidth: 1440 });
+  const isDesktop = useMediaQuery({ minWidth: 376 });
   return isDesktop ? children : null;
 };
 

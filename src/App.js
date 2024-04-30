@@ -10,7 +10,7 @@ function App() {
   return (
     <>
       <Desktop>
-        <p style={{color:"white"}}>HI Desktop</p>
+        <p>HI Desktop</p>
       </Desktop>
       <Mobile>
         HI Mobile
