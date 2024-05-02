@@ -1,11 +1,34 @@
 import './App.css';
-import Responsive from './MediaQuery'; 
+import { useState, useRef } from 'react';
+import Responsive from './MediaQuery';
+
 
 const { Desktop, Mobile } = Responsive;
 
+const dummys = [
+  'ride a bike',
+  'take a rest',
+  'eat the world',
+  'kakao',
+  'daum',
+  'likelion'
+]
 
 function App() {
+  const [lists, setLists] = useState(dummys);
+  const inputRef = useRef();
 
+  //filtered list required
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    const newTodo = inputRef.current.value;
+
+    //setLists update
+    setLists([...lists, newTodo])
+    
+    inputRef.current.value = "";
+  }
 
   return (
     <>
