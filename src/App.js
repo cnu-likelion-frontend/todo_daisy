@@ -2,7 +2,6 @@ import './App.css';
 import { useState, useRef } from 'react';
 import Responsive from './MediaQuery';
 
-
 const { Desktop, Mobile } = Responsive;
 
 const dummys = [
@@ -39,17 +38,35 @@ function App() {
           <div className='title'>TODO</div>
             <div className="container">
               <div className='todo-input-wrapper'>
-                <input class="todo-check" type="checkbox" value=""></input>
-                <label for="check" class="checkbox-label"></label>
-                <input  type='text' className='todo-input' placeholder='Create a new todo…'></input>
+                <div className='todo-input-item'>
+                  <input className="todo-check" type="checkbox" id="check" value=""></input>
+                  <label htmlFor="check" className="checkbox-label"></label>
+                  <input ref={inputRef} type='text' className='todo-input' placeholder='Create a new todo…'></input>
+                </div>
               </div>
               <ul className="todo-list">
-                <li className="todo-item">할일1</li>
-                <li className="todo-item">할일2</li>
+                {lists.map((item, index) => (
+                  <li key={index} className="todo-item">
+                    <input className="todo-check" type="checkbox" id={`check${index + 1}`} value=""></input>
+                    <label htmlFor={`check${index + 1}`} className="checkbox-label"></label>
+                    {item}
+                  </li>
+                ))}
+                <li className='footer'>
+                  <div className='count'>
+                      <p className='count-item'>5</p><p>items left</p>
+                  </div>
+                  <div className='buttons'>
+                    <button>All</button>
+                    <button>Active</button>
+                    <button>Completed</button>
+                  </div>
+                  <div className='clear'>
+                  <button>Clear Completed</button>
+                  </div>
+                </li>
               </ul>
-              <footer>
-               <p>Copyright © 2024</p>
-            </footer>
+              
             </div>
           </div>
 
