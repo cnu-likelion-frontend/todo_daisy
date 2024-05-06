@@ -1,38 +1,136 @@
-.App {
-  text-align: center;
+*{
+  box-sizing: border-box;
+  margin: 0px;
+  padding: 0px;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+
+.background-img{
+  width: 100%;
+  padding-top: 20%; /* 너비에 대한 높이 비율 */
+  background-image: url('./images/bg-desktop-light.jpg');
+  background-size: cover;
+  position: relative;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+/*main container potion absolute 주기*/
+.main{
+width: 640px;  
+height: 700px;
+display: flex;
+flex-direction: column;
+position: absolute;
+top: 5%;
+left: 50%;
+/* 화면 끝에서 50% 좌측으로 이동한 것 면적에서 x축기준 -50만큼 이동 */
+transform: translateX(-50%);
+
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.title{
+  color: #FFF;
+  font-size: 40px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+  letter-spacing: 15px;
+
+}
+.container{
   display: flex;
   flex-direction: column;
+  width: max-content;
+  gap: 20px;
+}
+
+.todo-input-wrapper {
+  display: flex;
+  align-items: center; /* 수직 정렬 추가 */
+  gap: 24px; /* 요소들 사이의 간격 조정 */
+  width: 540px;
+  height: 64px;
+  border-radius: 5px;
+  background: #FFF;
+  box-shadow: 0px 35px 50px -15px rgba(194, 195, 214, 0.50);
+  margin-top: 40px;
+  padding: 20px;
+}
+
+
+.todo-input {
+  width: calc(100% - 24px); /* 텍스트 입력 필드의 너비 조정 */
+  height: 100%;
+  border: none;
+  font-size: 18px;
+  color: #494C6B;
+  font-weight: 400;
+  letter-spacing: -0.25px;
+  outline: none;
+}
+
+.todo-input-item{
+  display: flex;
+  flex-direction: row;
   align-items: center;
+  gap: 24px;
+}
+
+
+.todo-input::placeholder{
+  color: #9495A5;
+  font-size: 18px;
+  font-weight: 400;
+  letter-spacing: -0.25px;
+}
+
+.todo-check{
+  display: none;
+}
+
+.checkbox-label {
+  width: 24px;
+  height: 24px;
+  background-color: #FFF; /* 체크박스의 배경색 */
+  border: 1px solid #E3E4F1; /* 체크박스의 테두리 스타일 */
+  border-radius: 100%;
+  display: flex;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  align-items: center;
 }
 
-.App-link {
-  color: #61dafb;
+
+/*ul, il 스타일링 */
+
+.todo-list{
+  width: 100%;
+  height: auto;
+  border-radius: 5px;
+  background: #FFF;
+  box-shadow: 0px 35px 50px -15px rgba(194, 195, 214, 0.50);
+  list-style-type: none;
+  padding: 0;
+}
+.todo-item{
+  width: 100%;
+  height: 24px;
+  display: flex;
+  align-items: center;
+  gap: 26px;
+  padding: 25px;
+  border-bottom: 1px solid #E3E4F1;
+}
+.todo-check:checked + .checkbox-label {
+  /* 이미지 채우기 */
+  background-image: url('./images/check.png');
+  background-size: cover;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.footer{
+  display: flex;
+  flex-direction: row;
+}
+
+.count{
+  display: flex;
+  flex-direction: row;
 }
