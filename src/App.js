@@ -65,8 +65,7 @@ function App() {
                   <button>Clear Completed</button>
                   </div>
                 </li>
-              </ul>
-              
+              </ul> 
             </div>
           </div>
 
