@@ -84,10 +84,10 @@ function App() {
                   <input className="todo-check" type="checkbox" id="check" value=""></input>
                   <label htmlFor="check" className="checkbox-label"></label>
                   </div>
-                  <input ref={inputRef} type='text' className='todo-input' placeholder='Create a new todo…'></input>
+                  <input ref={inputRef} type='text' className='mobile-todo-input' placeholder='Create a new todo…'></input>
                 </div>
               </div>
-              <ul className="todo-list">
+              <ul className="mobile-todo-list">
                 {lists.map((item, index) => (
                   <li key={index} className="todo-item">
                     <input className="todo-check" type="checkbox" id={`check${index + 1}`} value=""></input>
@@ -95,16 +95,16 @@ function App() {
                     {item}
                   </li>
                 ))}
-                <li className='footer'>
-                  <div className='count'>
+                <li className='mobile-footer'>
+                  <div className='mobile-count'>
                       <p className='count-item'>5</p><p>items left</p>
                   </div>
-                  <div className='buttons'>
+                  <div className='mobile-buttons'>
                     <button>All</button>
                     <button>Active</button>
                     <button>Completed</button>
                   </div>
-                  <div className='clear'>
+                  <div className='mobile-clear'>
                   <button>Clear Completed</button>
                   </div>
                 </li>
