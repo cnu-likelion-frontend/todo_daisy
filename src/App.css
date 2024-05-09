@@ -13,6 +13,11 @@
   position: relative;
 }
 
+/* 취소선 */
+.completed{
+  text-decoration: line-through;
+}
+
 /*main container potion absolute 주기*/
 .main{
 width: 640px;  
