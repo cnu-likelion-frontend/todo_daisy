@@ -11,23 +11,28 @@ const newID = function () {
 const dummys = [
   {
     id: newID(),
-    text:'ride a bike'
+    text:'ride a bike',
+    completed: false
   },
   {
     id: newID(),
-    text:'eat the world'
+    text:'eat the world',
+    completed: false
   },
   {
     id: newID(),
-    text:'take a rest'
+    text:'take a rest',
+    completed: false
   },
   {
     id: newID(),
-    text:'kakao'
+    text:'kakao',
+    completed: false
   },
   {
     id: newID(),
-    text:'likelion'
+    text:'likelion',
+    completed: false
   },
 ]
 
@@ -40,7 +45,7 @@ function App() {
     const newTodo = inputRef.current.value;
 
     //setLists update
-    setLists([...lists, { id: newID(), text: newTodo }])
+    setLists([...lists, { id: newID(), text: newTodo, completed: false }])
 
     inputRef.current.value = "";
   }
@@ -51,6 +56,23 @@ function App() {
     setLists(filteredItems);
   }
 
+
+  const showCompletedToggle = (condition) => {
+    //condition따라 toggle filter
+    const filteredItems = condition == 'active' 
+    ? lists.filter(item => !item.completed) 
+    : lists.filter(item => item.completed);
+    setLists(filteredItems);
+  }
+
+  const toggleComplete = (id) => {
+    setLists((prevLists) =>
+      prevLists.map((item) =>
+        item.id === id ? { ...item, completed: !item.completed } : item
+      )
+    );
+  }
+
   return (
     <>
       <Desktop>
@@ -59,7 +81,7 @@ function App() {
           <div className='main'>
             <div className='title'>TODO</div>
             <div className="container">
-              <div className='todo-input-wrapper'>
+              <form className='todo-input-wrapper' onSubmit={handleSubmit}>
                 <div className='todo-input-item'>
                   <div className='todo-input-check'>
                     <input className="todo-check" type="checkbox" id="check" value=""></input>
@@ -67,13 +89,13 @@ function App() {
                   </div>
                   <input ref={inputRef} type='text' className='todo-input' placeholder='Create a new todo…'></input>
                 </div>
-              </div>
+              </form>
               <ul className="todo-list">
                 {lists.map((item, index) => (
                   <li key={item.id} className="todo-item">
                     <input className="todo-check" type="checkbox" id={`check${index + 1}`} value=""></input>
-                    <label htmlFor={`check${index + 1}`} className="checkbox-label"></label>
-                    {item.text}
+                    <label htmlFor={`check${index + 1}`} onClick={() => toggleComplete(item.id)} className="checkbox-label"></label>
+                    <p className={item.completed ? 'completed' : ''}>{item.text}</p> 
                     <span onClick={() => deleteItem(item.id)} className="material-icons">
                       close
                     </span>
@@ -85,8 +107,8 @@ function App() {
                   </div>
                   <div className='buttons'>
                     <button>All</button>
-                    <button>Active</button>
-                    <button>Completed</button>
+                    <button onClick={() => showCompletedToggle('active')}>Active</button>
+                    <button onClick={() => showCompletedToggle('completed')}>Completed</button>
                   </div>
                   <div className='clear'>
                     <button>Clear Completed</button>
