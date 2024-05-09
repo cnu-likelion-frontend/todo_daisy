@@ -110,17 +110,14 @@ function App() {
                   <label htmlFor="check" className="checkbox-label"></label>
                   </div>
                   <input ref={inputRef} type='text' className='mobile-todo-input' placeholder='Create a new todo…'></input>
-
                 </div>
-                <input ref={inputRef} type='text' className='todo-input' placeholder='Create a new todo…'></input>
               </div>
-
               <ul className="mobile-todo-list">
                 {lists.map((item, index) => (
                   <li key={index} className="mobile-todo-item">
                     <input className="todo-check" type="checkbox" id={`check${index + 1}`} value=""></input>
                     <label htmlFor={`check${index + 1}`} className="checkbox-label"></label>
-                    {item}
+                    {item.text}
                   </li>
                 ))}
                 <li className='mobile-footer'>
@@ -137,8 +134,8 @@ function App() {
                     <button>Active</button>
                     <button>Completed</button>
               </div>
+            </div>
           </div>
-        </div>
       </Mobile>
     </>
   );
