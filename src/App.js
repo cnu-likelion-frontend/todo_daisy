@@ -167,6 +167,8 @@ function App() {
                     value=""
                   ></input>
                   <label htmlFor="check" className="checkbox-label"></label>
+                  </div>
+                  <input ref={inputRef} type='text' className='mobile-todo-input' placeholder='Create a new todo…'></input>
                 </div>
                 <input
                   ref={inputRef}
@@ -204,11 +206,16 @@ function App() {
                 </div>
                 <div className="clear">
                   <button>Clear Completed</button>
-                </div>
-              </li>
-            </ul>
+                  </div>
+                </li>
+              </ul> 
+              <div className='mobile-buttons'>
+                    <button>All</button>
+                    <button>Active</button>
+                    <button>Completed</button>
+              </div>
+            </div>
           </div>
-        </div>
       </Mobile>
     </>
   );
